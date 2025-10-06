@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feedback</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main>
+    <h1>Feedback for <%= staff.name %> - <span class="muted"><%= staff.subject %></span></h1>
+
+    <% if (alreadySubmitted) { %>
+      <div class="msg info">You have already submitted feedback for this staff.</div>
+    <% } else { %>
+      <form method="post" action="/student/feedback/<%= staff.id %>" class="card">
+        <fieldset>
+          <legend>Rating</legend>
+          <label>
+            <input type="radio" name="rating" value="Average" checked /> Average
+          </label>
+          <label>
+            <input type="radio" name="rating" value="Good" /> Good
+          </label>
+          <label>
+            <input type="radio" name="rating" value="Excellent" /> Excellent
+          </label>
+        </fieldset>
+
+        <label>Comments (optional)
+          <textarea name="comments" rows="4" placeholder="Share your thoughts"></textarea>
+        </label>
+
+        <button class="btn" type="submit">Submit Feedback</button>
+      </form>
+    <% } %>
+
+    <p><a href="/student/staff">Back to Staff</a></p>
+  </main>
+</body>
+</html>

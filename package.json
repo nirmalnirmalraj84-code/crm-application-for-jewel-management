@@ -1,0 +1,28 @@
+{
+  "name": "classroom-feedback-collector",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A simple web app for collecting classroom feedback from students and providing summaries for admins and the principal.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed": "node scripts/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "helmet": "^7.1.0",
+    "memorystore": "^1.6.7",
+    "morgan": "^1.10.0",
+    "sql.js": "^1.10.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

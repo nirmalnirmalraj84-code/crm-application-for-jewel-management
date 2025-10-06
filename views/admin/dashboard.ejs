@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main>
+    <h1>Feedback Summary</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Staff</th>
+          <th>Subject</th>
+          <th>Total</th>
+          <th>Average</th>
+          <th>Good</th>
+          <th>Excellent</th>
+          <th>Avg Score</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% summaries.forEach(row => { %>
+          <tr>
+            <td><%= row.staff_name %></td>
+            <td><%= row.subject %></td>
+            <td><%= row.total %></td>
+            <td><%= row.avg_count %></td>
+            <td><%= row.good_count %></td>
+            <td><%= row.excellent_count %></td>
+            <td><%= row.avg_score || '-' %></td>
+            <td><a class="btn" href="/admin/staff/<%= row.staff_id %>">View</a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <form method="post" action="/logout">
+      <button class="btn secondary" type="submit">Sign out</button>
+    </form>
+  </main>
+</body>
+</html>

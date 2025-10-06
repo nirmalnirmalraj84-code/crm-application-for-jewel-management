@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Choose Staff</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main>
+    <h1>Select Staff to Give Feedback</h1>
+
+    <% if (messages && messages.length) { %>
+      <div class="messages">
+        <% messages.forEach(m => { %>
+          <div class="msg <%= m.type %>"><%= m.text %></div>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <ul class="list">
+      <% staff.forEach(s => { %>
+        <li class="card">
+          <div class="row">
+            <div>
+              <strong><%= s.name %></strong>
+              <div class="muted"><%= s.subject %></div>
+            </div>
+            <div>
+              <a class="btn" href="/student/feedback/<%= s.id %>">Give Feedback</a>
+            </div>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+
+    <form method="post" action="/logout">
+      <button class="btn secondary" type="submit">Sign out</button>
+    </form>
+  </main>
+</body>
+</html>
