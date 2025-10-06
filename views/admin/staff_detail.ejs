@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Staff Feedback Detail</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main>
+    <h1><%= staff.name %> - <span class="muted"><%= staff.subject %></span></h1>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Summary</h3>
+        <ul>
+          <li>Total: <%= counts.total || 0 %></li>
+          <li>Average: <%= counts.avg_count || 0 %></li>
+          <li>Good: <%= counts.good_count || 0 %></li>
+          <li>Excellent: <%= counts.excellent_count || 0 %></li>
+          <li>Avg Score: <%= counts.avg_score || '-' %></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Comments</h3>
+        <% if (!comments.length) { %>
+          <p class="muted">No comments yet.</p>
+        <% } else { %>
+          <ul class="list">
+            <% comments.forEach(c => { %>
+              <li>
+                <div><strong><%= c.student_name %></strong> <span class="muted">(<%= new Date(c.created_at).toLocaleString() %>)</span></div>
+                <div><%= c.comments %></div>
+              </li>
+            <% }) %>
+          </ul>
+        <% } %>
+      </div>
+    </div>
+
+    <p><a href="/admin">Back to Dashboard</a></p>
+  </main>
+</body>
+</html>
