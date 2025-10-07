@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Select Staff & Subject</h2>
+<div class="grid">
+    {% for a in assignments %}
+    <a class="card list-item" href="{{ url_for('feedback_form', staff_id=a.staff.id, subject_id=a.subject.id) }}">
+        <div class="title">{{ a.staff.name }}</div>
+        <div class="subtitle">{{ a.subject.name }}</div>
+    </a>
+    {% else %}
+        <p>No assignments found.</p>
+    {% endfor %}
+{% endblock %}
+

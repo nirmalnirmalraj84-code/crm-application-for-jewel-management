@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Feedback Details — {{ staff.name }}</h2>
+
+<h3>By Subject</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Average</th>
+            <th>Good</th>
+            <th>Excellent</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for subject_id, entry in by_subject.items() %}
+        <tr>
+            <td>{{ entry.subject.name }}</td>
+            <td>{{ entry.avg }}</td>
+            <td>{{ entry.good }}</td>
+            <td>{{ entry.excellent }}</td>
+            <td>{{ entry.total }}</td>
+        </tr>
+    {% else %}
+        <tr><td colspan="5">No feedback yet for this staff.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h3>All Comments</h3>
+<ul class="comments">
+    {% for f in feedbacks %}
+        <li class="comment">
+            <div class="meta">{{ f.created_at.strftime('%Y-%m-%d %H:%M') }} · {{ f.subject.name }} · {{ f.rating }}</div>
+            <div class="body">{{ f.comments or '—' }}</div>
+        </li>
+    {% else %}
+        <li>No comments available.</li>
+    {% endfor %}
+</ul>
+
+<p><a class="button" href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a></p>
+{% endblock %}
+

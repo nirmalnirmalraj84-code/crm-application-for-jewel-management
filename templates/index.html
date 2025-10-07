@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+    <h2>Welcome</h2>
+    <p>Select your role to continue.</p>
+    <div class="actions">
+        <a class="button" href="{{ url_for('admin_login') }}">Staff</a>
+        <a class="button primary" href="{{ url_for('student_login') }}">Student</a>
+    </div>
+    <p class="muted">Forgot password is available on the Student login page.</p>
+    <div class="admin-note">
+        <strong>Admins:</strong> Use Admin/Principal login to view feedback dashboards.
+    </div>
+{% endblock %}
+
