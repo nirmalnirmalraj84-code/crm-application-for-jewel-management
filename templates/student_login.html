@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Student Login</h2>
+<form method="post" class="card form">
+    <label>Username
+        <input name="username" required>
+    </label>
+    <label>Password
+        <input name="password" type="password" required>
+    </label>
+    <div class="form-actions">
+        <button type="submit" class="button primary">Login</button>
+        <a href="{{ url_for('student_forgot_password') }}" class="button link">Forgot Password?</a>
+    </div>
+    <p class="muted">Try username <code>student1</code> and password <code>pass123</code> (seed data).</p>
+{% endblock %}
+

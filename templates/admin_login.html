@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Admin / Principal Login</h2>
+<form method="post" class="card form">
+    <label>Username
+        <input name="username" required>
+    </label>
+    <label>Password
+        <input name="password" type="password" required>
+    </label>
+    <div class="form-actions">
+        <button type="submit" class="button primary">Login</button>
+    </div>
+    <p class="muted">Try <code>admin/admin123</code> or <code>principal/principal123</code> (seed data).</p>
+{% endblock %}
+

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Feedback Summary by Staff</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Staff</th>
+            <th>Average</th>
+            <th>Good</th>
+            <th>Excellent</th>
+            <th>Total</th>
+            <th>Avg Score</th>
+            <th>Summary</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row.staff.name }}</td>
+            <td>{{ row.num_average }}</td>
+            <td>{{ row.num_good }}</td>
+            <td>{{ row.num_excellent }}</td>
+            <td>{{ row.total }}</td>
+            <td>{{ '%.2f'|format(row.avg_score) }}</td>
+            <td>{{ row.summary }}</td>
+            <td><a class="button small" href="{{ url_for('staff_feedback_detail', staff_id=row.staff.id) }}">View</a></td>
+        </tr>
+    {% else %}
+        <tr><td colspan="8">No staff found.</td></tr>
+    {% endfor %}
+    </tbody>
+{% endblock %}
+

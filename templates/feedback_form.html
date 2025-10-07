@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Feedback: {{ staff.name }} — {{ subject.name }}</h2>
+<form method="post" class="card form">
+    <fieldset>
+        <legend>Rating</legend>
+        <label class="radio"><input type="radio" name="rating" value="Average"> Average</label>
+        <label class="radio"><input type="radio" name="rating" value="Good"> Good</label>
+        <label class="radio"><input type="radio" name="rating" value="Excellent"> Excellent</label>
+    </fieldset>
+    <label>Comments (optional)
+        <textarea name="comments" rows="4" placeholder="Write any comments here..."></textarea>
+    </label>
+    <div class="form-actions">
+        <button class="button primary" type="submit">Submit Feedback</button>
+        <a class="button" href="{{ url_for('student_dashboard') }}">Cancel</a>
+    </div>
+{% endblock %}
+

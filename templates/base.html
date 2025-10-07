@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or 'Classroom Feedback Collector' }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="logo"><a href="{{ url_for('index') }}">Classroom Feedback Collector</a></h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+                {% if session.get('role') == 'student' %}
+                    <a href="{{ url_for('student_dashboard') }}">Student</a>
+                    <a href="{{ url_for('student_logout') }}">Logout</a>
+                {% elif session.get('role') in ['admin', 'principal'] %}
+                    <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+                    <a href="{{ url_for('admin_logout') }}">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('student_login') }}">Student Login</a>
+                    <a href="{{ url_for('admin_login') }}">Admin/Principal</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flash-list">
+                    {% for category, message in messages %}
+                        <li class="flash {{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; {{ 2025 }} Classroom Feedback Collector</p>
+        </div>
+    </footer>
+</body>
+</html>
+
